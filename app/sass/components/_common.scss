@@ -1,13 +1,225 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-size: 16px;
+    font-family: $medium;
+}
+
 .filter {
     position: fixed;
     width: 100%;
     height: 100%;
     top: 0;
     left: 0;
-    background: rgba(0, 0, 0, 0.3);
-    padding-top: 90px;
+    background: rgba(0, 0, 0, 0.4);
+}
+
+.title {
+    width: 102px;
+    height: 32px;
+    margin: 0 auto;
+    margin-top: 87px;
+}
+
+.title__img {
+    width: 100%;
+    height: auto;
+}
+
+.filter-friends__wrap {
+    width: 620px;
+    height: 516px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-top: -258px;
+    margin-left: -310px;
+    background: $white;
+    overflow: hidden;
+    @include border-radius(10px);
 }
 
 .filter-title {
-    width: 100px;
+    background: $orange;
+    padding-left: 15px;
+    @include clearfix;
+}
+
+.filter-title__left {
+    float: left;
+}
+
+.filter-title__right {
+    float: right;
+}
+
+.filter-title__text {
+    color: $white;
+    padding: 15px 0;
+}
+
+.filter-title__close {
+    color: $white;
+    font-size: 16px;
+    padding: 15px;
+    display: block;
+}
+
+.filter-search {
+    background: $lgray;
+    padding: 10px 5px;
+    @include clearfix;
+}
+.filter-search-left,
+.filter-search-right {
+    width: 50%;
+    padding: 0 10px;
+    position: relative;
+}
+
+.filter-search-left {
+    float: left;
+}
+
+.filter-search-right {
+    float: right;
+}
+
+.filter-search__input {
+    width: 100%;
+    @include border-radius(20px);
+    border: none;
+    padding: 8px 10px 6px 30px;
+    color: $dgray;
+    font-size: 12px;
+    font-family: $light;
+    outline: none;
+    &::-webkit-input-placeholder {color:$gray;font-size:12px;font-family:$light}
+    &::-moz-placeholder          {color:$gray;font-size:12px;font-family:$light}
+    &:-moz-placeholder           {color:$gray;font-size:12px;font-family:$light}
+    &:-ms-input-placeholder      {color:$gray;font-size:12px;font-family:$light}
+}
+
+.filter-search__btn {
+    position: absolute;
+    top: 50%;
+    margin-top: -12px;
+    left: 20px;
+    color: $gray;
+}
+
+.filter-content {
+    @include clearfix;
+}
+
+.filter-content-left,
+.filter-content-right {
+    width: 50%;
+}
+
+
+.filter-content-left {
+    float: left;
+    border-right: 1px solid $lgray;
+    height: 100%;
+}
+
+.filter-content-right {
+    float: right;
+}
+
+.filter-content-title {
+    margin-bottom: 5px;
+    padding: 15px 15px 0;
+}
+
+.filter-content__wrap {
+    position: relative;
+    
+}
+
+.filter-content__list {
+    margin: 0;
+    padding: 0 15px;
+    list-style: none;
+    height: 325px;
+    position: relative;
+}
+
+.filter-content__item {
+    padding: 6px 10px;
+    border-bottom: 1px solid $lgray;
+    position: relative;
+    @include clearfix;
+    &:hover {
+        background: $lgray;
+    }
+    &:first-child {
+        border-top: 1px solid $lgray;
+    }
+}
+
+.filter-content-title__text,
+.filter-content-name__text {
+    font-size: 12px;
+    color: $dgray;
+}
+
+.filter-content-ava {
+    width: 45px;
+    height: 45px;
+    float: left;
+    @include border-radius(50%);
+}
+
+.filter-content-name {
+    float: left;
+    width: 185px;
+    margin-left: 10px;
+}
+
+.filter-content-btn {
+    float: right;
+}
+
+.filter-content-name,
+.filter-content-btn {
+    height: 45px;
+    line-height: 45px;
+}
+
+.filter-content-name__text {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.filter-content-btn__add,
+.filter-content-btn__remove {
+    font-size: 16px;
+}
+
+.filter-save {
+    height: 45px;
+    background: $lgray;
+    text-align: right;
+    padding-top: 7px;
+}
+
+.filter-save__btn {
+    padding: 6px 15px;
+    background: $orange;
+    margin-right: 10px;
+    border: none;
+    @include border-radius(10px);
+    color: $white;
+    font-size: 12px;
+    font-family: $light;
+    transition: 0.3s;
+    &:hover {
+        background: lighten( $orange, 5% );
+    }
 }

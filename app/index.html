@@ -12,7 +12,8 @@
     <link rel="icon" href="/favicon.ico" type="icon/x-icon">
     <!-- build:css css/vendor.min.css -->
     <!-- bower:css-->
-    <link rel="stylesheet" href="/bower/normalize.css/normalize.css">
+    <link rel="stylesheet" href="bower/normalize.css/normalize.css">
+    <link rel="stylesheet" href="bower/perfect-scrollbar/css/perfect-scrollbar.css">
     <!-- endbower -->
     <!-- endbuild -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
@@ -20,25 +21,27 @@
     <link rel="stylesheet" href="css/main.css">
     <!-- endbuild -->
     <!-- build:js js/modernizr.min.js -->
-    <script src="/bower/modernizr/modernizr.js"></script>
+    <script src="bower/modernizr/modernizr.js"></script>
     <!-- endbuild -->
   </head>
 
   <body>
     <div class="wrap">
+      <div class="title"><img src="images/title.png" alt="title" class="title__img"></div>
       <div class="filter">
-        <div class="filter-title"><img src="images/title.png" alt="title" class="filter-title__img"></div>
         <div class="filter-friends">
           <div class="filter-friends__wrap">
             <div class="filter-title">
-              <div class="title__text">Выберите друзей</div>
-              <div class="title__close"><i class="fa fa-times"></i></div>
+              <div class="filter-title__left">
+                <div class="filter-title__text">Выберите друзей</div>
+              </div>
+              <div class="filter-title__right"><a href="#" class="filter-title__close"><i class="fa fa-times"></i></a></div>
             </div>
             <div class="filter-search">
-              <div class="filter-search-left"><input type="text" name="firstName" id="leftName" class="filter-search__input">
+              <div class="filter-search-left"><input type="text" name="firstName" id="leftName" placeholder="Начните вводить имя друга" class="filter-search__input">
                 <div class="filter-search__btn"><i class="fa fa-search"></i></div>
               </div>
-              <div class="filter-search-right"><input type="text" name="firstName" id="leftName" class="filter-search__input">
+              <div class="filter-search-right"><input type="text" name="firstName" id="leftName" placeholder="Имя в списке" class="filter-search__input">
                 <div class="filter-search__btn"><i class="fa fa-search"></i></div>
               </div>
             </div>
@@ -47,15 +50,55 @@
                 <div class="filter-content-title">
                   <div class="filter-content-title__text">Ваши друзья</div>
                 </div>
-                <ul class="filter-content__list">
+                <ul id="allFriends" class="filter-content__list">
                   <li class="filter-content__item">
-                    <div class="filter-content-ava"><img class="filter-content-ava__img"></div>
+                    <div class="filter-content-ava"><img src="images/ava.png" alt="ava" class="filter-content-ava__img"></div>
                     <div class="filter-content-name">
                       <div class="filter-content-name__text">Artem Baranov</div>
                     </div>
-                    <div class="filter-content-btn">
-                      <a href="#" class="filter-content-btn__add"></a>
+                    <div class="filter-content-btn"><a href="#" class="filter-content-btn__add"><i class="fa fa-plus"></i></a></div>
+                  </li>
+                  <li class="filter-content__item">
+                    <div class="filter-content-ava"><img src="images/ava.png" alt="ava" class="filter-content-ava__img"></div>
+                    <div class="filter-content-name">
+                      <div class="filter-content-name__text">Artem Baranov</div>
                     </div>
+                    <div class="filter-content-btn"><a href="#" class="filter-content-btn__add"><i class="fa fa-plus"></i></a></div>
+                  </li>
+                  <li class="filter-content__item">
+                    <div class="filter-content-ava"><img src="images/ava.png" alt="ava" class="filter-content-ava__img"></div>
+                    <div class="filter-content-name">
+                      <div class="filter-content-name__text">Artem Baranov</div>
+                    </div>
+                    <div class="filter-content-btn"><a href="#" class="filter-content-btn__add"><i class="fa fa-plus"></i></a></div>
+                  </li>
+                  <li class="filter-content__item">
+                    <div class="filter-content-ava"><img src="images/ava.png" alt="ava" class="filter-content-ava__img"></div>
+                    <div class="filter-content-name">
+                      <div class="filter-content-name__text">Artem Baranov</div>
+                    </div>
+                    <div class="filter-content-btn"><a href="#" class="filter-content-btn__add"><i class="fa fa-plus"></i></a></div>
+                  </li>
+                  <li class="filter-content__item">
+                    <div class="filter-content-ava"><img src="images/ava.png" alt="ava" class="filter-content-ava__img"></div>
+                    <div class="filter-content-name">
+                      <div class="filter-content-name__text">Artem Baranov</div>
+                    </div>
+                    <div class="filter-content-btn"><a href="#" class="filter-content-btn__add"><i class="fa fa-plus"></i></a></div>
+                  </li>
+                  <li class="filter-content__item">
+                    <div class="filter-content-ava"><img src="images/ava.png" alt="ava" class="filter-content-ava__img"></div>
+                    <div class="filter-content-name">
+                      <div class="filter-content-name__text">Artem Baranov</div>
+                    </div>
+                    <div class="filter-content-btn"><a href="#" class="filter-content-btn__add"><i class="fa fa-plus"></i></a></div>
+                  </li>
+                  <li class="filter-content__item">
+                    <div class="filter-content-ava"><img src="images/ava.png" alt="ava" class="filter-content-ava__img"></div>
+                    <div class="filter-content-name">
+                      <div class="filter-content-name__text">Artem Baranov</div>
+                    </div>
+                    <div class="filter-content-btn"><a href="#" class="filter-content-btn__add"><i class="fa fa-plus"></i></a></div>
                   </li>
                 </ul>
               </div>
@@ -63,15 +106,13 @@
                 <div class="filter-content-title">
                   <div class="filter-content-title__text">Друзья в списке</div>
                 </div>
-                <ul class="filter-content__list">
+                <ul id="addedFriends" class="filter-content__list">
                   <li class="filter-content__item">
-                    <div class="filter-content-ava"><img class="filter-content-ava__img"></div>
+                    <div class="filter-content-ava"><img src="images/ava.png" alt="ava" class="filter-content-ava__img"></div>
                     <div class="filter-content-name">
                       <div class="filter-content-name__text">Artem Baranov</div>
                     </div>
-                    <div class="filter-content-btn">
-                      <a href="#" class="filter-content-btn__remove"></a>
-                    </div>
+                    <div class="filter-content-btn"><a href="#" class="filter-content-btn__remove"><i class="fa fa-times"></i></a></div>
                   </li>
                 </ul>
               </div>
@@ -83,7 +124,7 @@
     </div>
     <!-- build:js js/vendor.js -->
     <!--bower:js-->
-    <script src="/bower/modernizr/modernizr.js"></script>
+    <script src="bower/perfect-scrollbar/js/perfect-scrollbar.js"></script>
     <!--endbower-->
     <!-- endbuild -->
     <!-- build:js js/main.js -->
