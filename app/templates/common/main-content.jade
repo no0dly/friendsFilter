@@ -1,0 +1,43 @@
+.filter
+    .filter-title
+        img.filter-title__img(src="images/title.png", alt="title")
+    .filter-friends
+        .filter-friends__wrap
+            .filter-title
+                .title__text Выберите друзей
+                .title__close
+                    i.fa.fa-times
+            .filter-search
+                .filter-search-left
+                    input.filter-search__input(type="text", name="firstName", id="leftName")
+                    .filter-search__btn
+                        i.fa.fa-search
+                .filter-search-right
+                    input.filter-search__input(type="text", name="firstName", id="leftName")
+                    .filter-search__btn
+                        i.fa.fa-search
+            .filter-content
+                .filter-content-left
+                    .filter-content-title
+                        .filter-content-title__text Ваши друзья
+                    ul.filter-content__list
+                        li.filter-content__item
+                            .filter-content-ava
+                                img.filter-content-ava__img
+                            .filter-content-name
+                                .filter-content-name__text Artem Baranov
+                            .filter-content-btn
+                                a.filter-content-btn__add(href="#")
+                .filter-content-right
+                    .filter-content-title
+                        .filter-content-title__text Друзья в списке
+                    ul.filter-content__list
+                        li.filter-content__item
+                            .filter-content-ava
+                                img.filter-content-ava__img
+                            .filter-content-name
+                                .filter-content-name__text Artem Baranov
+                            .filter-content-btn
+                                a.filter-content-btn__remove(href="#")
+            .filter-save
+                input.filter-save__btn(type="submit", value="Сохранить", id="submit")
