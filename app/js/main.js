@@ -15,6 +15,7 @@
         }
     }).then(function() {
         return new Promise(function(resolve, reject) {
+
             VK.init({
                 apiId: 5373612
             });
@@ -43,6 +44,36 @@
                 }
             });
         });
+    }).then(function() {
+        var searchAll   = document.getElementById('leftName');
+        var searchAdded = document.getElementById('rightName');
+
+        searchAll.value = null;
+        searchAdded.value = null;
+        searchAll.addEventListener('input', search);
+        searchAdded.addEventListener('input', search);
+
+        function search(e) {
+            var $this    = this;
+            var inputVal = $this.value.toLowerCase();
+            var items;
+            var friendName;
+
+            if( e.target.name === 'left-name') {
+                items = document.getElementById('allFriends');
+            } else {
+                items = document.getElementById('addedFriends');
+            }
+
+            friendName = items.querySelectorAll('.filter-content-name__text');
+
+            for( var i = 0; i < friendName.length; i++ ) {
+                friendName[i].closest('.filter-content__item').classList.remove('hide');
+                if( friendName[i].innerText.toLowerCase().indexOf(inputVal) === -1 ) {
+                    friendName[i].closest('.filter-content__item').classList.add('hide');
+                }
+            }
+        }
     }).catch(function(e) {
         console.error(e.message);
     });
@@ -51,7 +82,7 @@
 (function() {
     var contentContainer = document.querySelector('.filter-content');
 
-    contentContainer.addEventListener('click', listAction, false);
+    contentContainer.addEventListener('click', listAction);
 
     function listAction(e) {
         var addClass    = 'filter-content-btn__add';
