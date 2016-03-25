@@ -12,8 +12,8 @@
     <link rel="icon" href="/favicon.ico" type="icon/x-icon">
     <!-- build:css css/vendor.min.css -->
     <!-- bower:css-->
-    <link rel="stylesheet" href="bower/normalize.css/normalize.css">
-    <link rel="stylesheet" href="bower/perfect-scrollbar/css/perfect-scrollbar.css">
+    <link rel="stylesheet" href="/bower/normalize.css/normalize.css">
+    <link rel="stylesheet" href="/bower/perfect-scrollbar/css/perfect-scrollbar.css">
     <!-- endbower -->
     <!-- endbuild -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
@@ -27,9 +27,9 @@
 
   <body>
     <div class="wrap">
-      <div class="title"><img src="images/title.png" alt="title" class="title__img"></div>
       <div class="filter">
         <div class="filter-friends">
+          <div class="filter-logo"><img src="images/title.png" alt="title" class="filter-logo__img"></div>
           <div class="filter-friends__wrap">
             <div class="filter-title">
               <div class="filter-title__left">
@@ -51,55 +51,19 @@
                   <div class="filter-content-title__text">Ваши друзья</div>
                 </div>
                 <ul id="allFriends" class="filter-content__list">
-                  <li class="filter-content__item">
-                    <div class="filter-content-ava"><img src="images/ava.png" alt="ava" class="filter-content-ava__img"></div>
-                    <div class="filter-content-name">
-                      <div class="filter-content-name__text">Artem Baranov</div>
-                    </div>
-                    <div class="filter-content-btn"><a href="#" class="filter-content-btn__add"><i class="fa fa-plus"></i></a></div>
-                  </li>
-                  <li class="filter-content__item">
-                    <div class="filter-content-ava"><img src="images/ava.png" alt="ava" class="filter-content-ava__img"></div>
-                    <div class="filter-content-name">
-                      <div class="filter-content-name__text">Artem Baranov</div>
-                    </div>
-                    <div class="filter-content-btn"><a href="#" class="filter-content-btn__add"><i class="fa fa-plus"></i></a></div>
-                  </li>
-                  <li class="filter-content__item">
-                    <div class="filter-content-ava"><img src="images/ava.png" alt="ava" class="filter-content-ava__img"></div>
-                    <div class="filter-content-name">
-                      <div class="filter-content-name__text">Artem Baranov</div>
-                    </div>
-                    <div class="filter-content-btn"><a href="#" class="filter-content-btn__add"><i class="fa fa-plus"></i></a></div>
-                  </li>
-                  <li class="filter-content__item">
-                    <div class="filter-content-ava"><img src="images/ava.png" alt="ava" class="filter-content-ava__img"></div>
-                    <div class="filter-content-name">
-                      <div class="filter-content-name__text">Artem Baranov</div>
-                    </div>
-                    <div class="filter-content-btn"><a href="#" class="filter-content-btn__add"><i class="fa fa-plus"></i></a></div>
-                  </li>
-                  <li class="filter-content__item">
-                    <div class="filter-content-ava"><img src="images/ava.png" alt="ava" class="filter-content-ava__img"></div>
-                    <div class="filter-content-name">
-                      <div class="filter-content-name__text">Artem Baranov</div>
-                    </div>
-                    <div class="filter-content-btn"><a href="#" class="filter-content-btn__add"><i class="fa fa-plus"></i></a></div>
-                  </li>
-                  <li class="filter-content__item">
-                    <div class="filter-content-ava"><img src="images/ava.png" alt="ava" class="filter-content-ava__img"></div>
-                    <div class="filter-content-name">
-                      <div class="filter-content-name__text">Artem Baranov</div>
-                    </div>
-                    <div class="filter-content-btn"><a href="#" class="filter-content-btn__add"><i class="fa fa-plus"></i></a></div>
-                  </li>
-                  <li class="filter-content__item">
-                    <div class="filter-content-ava"><img src="images/ava.png" alt="ava" class="filter-content-ava__img"></div>
-                    <div class="filter-content-name">
-                      <div class="filter-content-name__text">Artem Baranov</div>
-                    </div>
-                    <div class="filter-content-btn"><a href="#" class="filter-content-btn__add"><i class="fa fa-plus"></i></a></div>
-                  </li>
+                  <script id="listTemplate" type="text/x-handlebars-template">
+                    {{#each list}}
+                      <li class="filter-content__item">
+                        <div class="filter-content-ava"> <img class="filter-content-ava__img" src= {{photo_50}} , alt="ava"> </div>
+                        <div class="filter-content-name">
+                          <div class="filter-content-name__text"> {{first_name}} {{last_name}} </div>
+                        </div>
+                        <div class="filter-content-btn">
+                          <a class="filter-content-btn__add" href="#"> <i class="fa fa-plus"></i> </a>
+                        </div>
+                      </li>
+                    {{/each}}
+                  </script>
                 </ul>
               </div>
               <div class="filter-content-right">
@@ -107,13 +71,19 @@
                   <div class="filter-content-title__text">Друзья в списке</div>
                 </div>
                 <ul id="addedFriends" class="filter-content__list">
-                  <li class="filter-content__item">
-                    <div class="filter-content-ava"><img src="images/ava.png" alt="ava" class="filter-content-ava__img"></div>
-                    <div class="filter-content-name">
-                      <div class="filter-content-name__text">Artem Baranov</div>
-                    </div>
-                    <div class="filter-content-btn"><a href="#" class="filter-content-btn__remove"><i class="fa fa-times"></i></a></div>
-                  </li>
+                  <script id="addedListTemplate" type="text/x-handlebars-template">
+                    {{#each list}}
+                      <li class="filter-content__item">
+                        <div class="filter-content-ava"> <img class="filter-content-ava__img" src= {{photo_50}} , alt="ava"> </div>
+                        <div class="filter-content-name">
+                          <div class="filter-content-name__text"> {{first_name}} {{last_name}} </div>
+                        </div>
+                        <div class="filter-content-btn">
+                          <a class="filter-content-btn__add" href="#"> <i class="fa fa-plus"></i> </a>
+                        </div>
+                      </li>
+                    {{/each}}
+                  </script>
                 </ul>
               </div>
             </div>
@@ -124,9 +94,12 @@
     </div>
     <!-- build:js js/vendor.js -->
     <!--bower:js-->
-    <script src="bower/perfect-scrollbar/js/perfect-scrollbar.js"></script>
+    <script src="/bower/perfect-scrollbar/js/perfect-scrollbar.jquery.js"></script>
+    <script src="/bower/perfect-scrollbar/js/perfect-scrollbar.js"></script>
+    <script src="/bower/handlebars/handlebars.js"></script>
     <!--endbower-->
     <!-- endbuild -->
+    <script src="http://vk.com/js/api/openapi.js" type="text/javascript"></script>
     <!-- build:js js/main.js -->
     <script src="js/main.js"></script>
     <!-- endbuild -->

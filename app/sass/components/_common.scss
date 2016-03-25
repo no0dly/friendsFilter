@@ -8,37 +8,46 @@ body {
 }
 
 .filter {
-    position: fixed;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    background: rgba(0, 0, 0, 0.4);
+    &:after {
+        content: "";
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        background: rgba(0, 0, 0, 0.4);
+    }
 }
 
-.title {
+.filter-logo {
     width: 102px;
     height: 32px;
-    margin: 0 auto;
-    margin-top: 87px;
+    margin: 0 auto 12px;
 }
 
-.title__img {
+.filter-logo__img {
     width: 100%;
     height: auto;
 }
 
-.filter-friends__wrap {
+.filter-friends {
     width: 620px;
-    height: 516px;
+    height: 560px;
     position: absolute;
     top: 50%;
     left: 50%;
-    margin-top: -258px;
+    margin-top: -280px;
     margin-left: -310px;
+}
+
+.filter-friends__wrap {
+    width: 100%;
+    height: 516px;
     background: $white;
     overflow: hidden;
     @include border-radius(10px);
+    position: relative;
+    z-index: 2;
 }
 
 .filter-title {
@@ -131,13 +140,12 @@ body {
 }
 
 .filter-content-title {
-    margin-bottom: 5px;
-    padding: 15px 15px 0;
+    margin: 0 15px;
+    padding-top: 15px;
 }
 
 .filter-content__wrap {
     position: relative;
-    
 }
 
 .filter-content__list {
@@ -156,9 +164,6 @@ body {
     &:hover {
         background: $lgray;
     }
-    &:first-child {
-        border-top: 1px solid $lgray;
-    }
 }
 
 .filter-content-title__text,
@@ -167,10 +172,16 @@ body {
     color: $dgray;
 }
 
+.filter-content-title__text {
+    padding-bottom: 5px;
+    border-bottom: 1px solid $lgray;
+}
+
 .filter-content-ava {
     width: 45px;
     height: 45px;
     float: left;
+    overflow: hidden;
     @include border-radius(50%);
 }
 
@@ -200,6 +211,7 @@ body {
 .filter-content-btn__add,
 .filter-content-btn__remove {
     font-size: 16px;
+    color: $gray;
 }
 
 .filter-save {
