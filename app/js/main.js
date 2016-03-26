@@ -74,6 +74,32 @@
                 }
             }
         }
+    }).then(function() {
+        var content        = document.querySelector('.filter-content');
+        var allFriends     = document.getElementById('allFriends');
+        var addedFriends   = document.getElementById('addedFriends');
+        var item;
+
+        content.addEventListener("dragstart", function(e) {
+            item = e.target;
+        });
+        content.addEventListener("dragover", function(e) {
+            e.preventDefault();
+        });
+
+        content.addEventListener( 'drop', moveFriend, true );
+
+        function moveFriend(e) {
+            if(e.target === addedFriends || e.target.closest('.filter-content__list--added') ) {
+                if( item.parentNode !== addedFriends ) {
+                    addedFriends.appendChild(item);
+                }
+            } else if( e.target === allFriends || e.target.closest('.filter-content__list--all') ){
+                if( item.parentNode !== allFriends ) {
+                    allFriends.appendChild(item);
+                }
+            }
+        }
     }).catch(function(e) {
         console.error(e.message);
     });

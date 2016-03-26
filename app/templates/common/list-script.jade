@@ -1,15 +1,15 @@
 | {{#each list}}
-|     <li class="filter-content__item">
+|     <li class="filter-content__item" draggable="true">
 |         <div class="filter-content-ava">
-|             <img class="filter-content-ava__img" src={{photo_50}}, alt="ava">
+|             <img class="filter-content-ava__img" src={{photo_50}}, alt="ava" draggable="false">
 |         </div>
-|         <div class="filter-content-name">
+|         <div class="filter-content-name" draggable="false">
 |             <div class="filter-content-name__text">
 |                 {{first_name}} {{last_name}}
 |             </div>
 |         </div>
-|         <div class="filter-content-btn">
-|             <a class="filter-content-btn__add" href="#">
+|         <div class="filter-content-btn" draggable="false">
+|             <a class="filter-content-btn__add" href="#" draggable="false">
 |                 <i class="fa fa-plus"></i>
 |             </a>
 |         </div>

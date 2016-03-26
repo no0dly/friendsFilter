@@ -22,13 +22,13 @@
                 .filter-content-left
                     .filter-content-title
                         .filter-content-title__text Ваши друзья
-                    ul.filter-content__list#allFriends
+                    ul#allFriends.filter-content__list.filter-content__list--all
                         script(id="listTemplate" type="text/x-handlebars-template")
                             include list-script.jade
                 .filter-content-right
                     .filter-content-title
                         .filter-content-title__text Друзья в списке
-                    ul.filter-content__list#addedFriends
+                    ul#addedFriends.filter-content__list.filter-content__list--added
                         script(id="addedListTemplate" type="text/x-handlebars-template")
                             include list-script.jade
                         //- li.filter-content__item
