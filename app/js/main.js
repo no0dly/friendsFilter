@@ -38,8 +38,8 @@
                     var templateFn  = Handlebars.compile(source);
                     var template    = templateFn({list: response.response});
                     var container   = document.getElementById('allFriends');
-
                     container.innerHTML = template;
+                    console.log(response.response);
                     resolve();
                 }
             });
@@ -129,11 +129,52 @@
             target.className = removeIcons;
 
         } else if( link.className === removeClass ) {
-
             allFriends.appendChild(friend);
             link.className = addClass;
             target.className = addIcons;
-
         }
+    }
+}());
+
+(function() {
+    var saveBtn = document.getElementById('submit');
+
+    saveBtn.addEventListener('click', saveList);
+
+    function saveList(e){
+        var listAll      = document.getElementById('allFriends').children;
+        var listAdded    = document.getElementById('addedFriends').children;
+        var listAllarr   = [];
+        var listAddedarr = [];
+        var obj;
+        var img;
+        var name;
+        var Obj = function( photo, name) {
+            this.name = name;
+            this.photo = photo;
+        };
+
+        e.preventDefault();
+
+        if( listAdded.length ) {
+            for( var i = 0; i < listAll.length; i++ ) {
+                img  = listAll[i].querySelector('.filter-content-ava__img').getAttribute('src'); 
+                name = listAll[i].querySelector('.filter-content-name__text').innerText;
+                obj  = new Obj(img, name);
+                listAllarr.push(obj);
+            }
+            for( var k = 0; k < listAdded.length; k++ ) {
+                if( listAdded[k].tagName === "LI") {
+                    img  = listAdded[k].querySelector('.filter-content-ava__img').getAttribute('src'); 
+                    name = listAdded[k].querySelector('.filter-content-name__text').innerText;
+                    obj  = new Obj(img, name);
+                    listAddedarr.push(obj);
+                }
+            }
+        }
+        // console.log(JSON.stringify(listAllarr));
+        // console.log(JSON.stringify(listAddedarr));
+        localStorage.setItem('allFriends', JSON.stringify(listAllarr));
+        localStorage.setItem('addedFriends', JSON.stringify(listAddedarr));
     }
 }());

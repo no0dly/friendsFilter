@@ -22,22 +22,16 @@
                 .filter-content-left
                     .filter-content-title
                         .filter-content-title__text Ваши друзья
+
                     ul#allFriends.filter-content__list.filter-content__list--all
-                        script(id="listTemplate" type="text/x-handlebars-template")
-                            include list-script.jade
+                    script(id="listTemplate" type="text/x-handlebars-template")
+                        include list-script.jade
                 .filter-content-right
                     .filter-content-title
                         .filter-content-title__text Друзья в списке
+
                     ul#addedFriends.filter-content__list.filter-content__list--added
-                        script(id="addedListTemplate" type="text/x-handlebars-template")
-                            include list-script.jade
-                        //- li.filter-content__item
-                        //-     .filter-content-ava
-                        //-         img.filter-content-ava__img(src="images/ava.png", alt="ava")
-                        //-     .filter-content-name
-                        //-         .filter-content-name__text Artem Baranov
-                        //-     .filter-content-btn
-                        //-         a.filter-content-btn__remove(href="#")
-                        //-             i.fa.fa-times
+                    script(id="addedListTemplate" type="text/x-handlebars-template")
+                        include list-script.jade
             .filter-save
                 input.filter-save__btn(type="submit", value="Сохранить", id="submit")

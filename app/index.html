@@ -50,41 +50,39 @@
                 <div class="filter-content-title">
                   <div class="filter-content-title__text">Ваши друзья</div>
                 </div>
-                <ul id="allFriends" class="filter-content__list filter-content__list--all">
-                  <script id="listTemplate" type="text/x-handlebars-template">
-                    {{#each list}}
-                      <li class="filter-content__item" draggable="true">
-                        <div class="filter-content-ava"> <img class="filter-content-ava__img" src= {{photo_50}} , alt="ava" draggable="false"> </div>
-                        <div class="filter-content-name" draggable="false">
-                          <div class="filter-content-name__text"> {{first_name}} {{last_name}} </div>
-                        </div>
-                        <div class="filter-content-btn" draggable="false">
-                          <a class="filter-content-btn__add" href="#" draggable="false"> <i class="fa fa-plus"></i> </a>
-                        </div>
-                      </li>
-                    {{/each}}
-                  </script>
-                </ul>
+                <ul id="allFriends" class="filter-content__list filter-content__list--all"></ul>
+                <script id="listTemplate" type="text/x-handlebars-template">
+                  {{#each list}}
+                    <li class="filter-content__item" draggable="true">
+                      <div class="filter-content-ava"> <img class="filter-content-ava__img" src= {{photo_50}} , alt="ava" draggable="false"> </div>
+                      <div class="filter-content-name" draggable="false">
+                        <div class="filter-content-name__text"> {{first_name}} {{last_name}} </div>
+                      </div>
+                      <div class="filter-content-btn" draggable="false">
+                        <a class="filter-content-btn__add" href="#" draggable="false"> <i class="fa fa-plus"></i> </a>
+                      </div>
+                    </li>
+                  {{/each}}
+                </script>
               </div>
               <div class="filter-content-right">
                 <div class="filter-content-title">
                   <div class="filter-content-title__text">Друзья в списке</div>
                 </div>
-                <ul id="addedFriends" class="filter-content__list filter-content__list--added">
-                  <script id="addedListTemplate" type="text/x-handlebars-template">
-                    {{#each list}}
-                      <li class="filter-content__item" draggable="true">
-                        <div class="filter-content-ava"> <img class="filter-content-ava__img" src= {{photo_50}} , alt="ava" draggable="false"> </div>
-                        <div class="filter-content-name" draggable="false">
-                          <div class="filter-content-name__text"> {{first_name}} {{last_name}} </div>
-                        </div>
-                        <div class="filter-content-btn" draggable="false">
-                          <a class="filter-content-btn__add" href="#" draggable="false"> <i class="fa fa-plus"></i> </a>
-                        </div>
-                      </li>
-                    {{/each}}
-                  </script>
-                </ul>
+                <ul id="addedFriends" class="filter-content__list filter-content__list--added"></ul>
+                <script id="addedListTemplate" type="text/x-handlebars-template">
+                  {{#each list}}
+                    <li class="filter-content__item" draggable="true">
+                      <div class="filter-content-ava"> <img class="filter-content-ava__img" src= {{photo_50}} , alt="ava" draggable="false"> </div>
+                      <div class="filter-content-name" draggable="false">
+                        <div class="filter-content-name__text"> {{first_name}} {{last_name}} </div>
+                      </div>
+                      <div class="filter-content-btn" draggable="false">
+                        <a class="filter-content-btn__add" href="#" draggable="false"> <i class="fa fa-plus"></i> </a>
+                      </div>
+                    </li>
+                  {{/each}}
+                </script>
               </div>
             </div>
             <div class="filter-save"><input type="submit" value="Сохранить" id="submit" class="filter-save__btn"></div>
