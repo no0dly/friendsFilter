@@ -34,12 +34,48 @@
                 if( response.error ) {
                     reject( new Error(response.error.error_msg) );
                 } else {
-                    var source      = document.getElementById('listTemplate').innerHTML;
-                    var templateFn  = Handlebars.compile(source);
-                    var template    = templateFn({list: response.response});
-                    var container   = document.getElementById('allFriends');
+
+                    var locStor      = localStorage.addedFriends.split(',');
+                    var addedFriends = [];
+                    var allFriends   = [];
+                    var container;
+                    var source;
+                    var templateFn;
+                    var template;
+                    
+
+                    if( locStor.length ) {
+                        allFriends = response.response.filter(function(val) {
+                            if(!filter(val)) {
+                                return false;
+                            }
+                            return true;
+                        });
+
+                        function filter(element) {
+                            for(var i = 0; i < locStor.length; i++) {
+                                if (element.uid.toString().indexOf( locStor[i].toString() ) !== -1 ) {
+                                    addedFriends.push(element);
+                                    return false;
+                                }
+                            }
+                            return true;
+                        }
+                    }
+                    //all fr
+                    source     = document.getElementById('listTemplate').innerHTML;
+                    templateFn = Handlebars.compile(source);
+                    template   = templateFn({list: allFriends});
+                    container  = document.getElementById('allFriends');
                     container.innerHTML = template;
-                    console.log(response.response);
+                    //added fr
+                    source     = document.getElementById('addedListTemplate').innerHTML;
+                    templateFn = Handlebars.compile(source);
+                    template   = templateFn({list: addedFriends});
+                    container  = document.getElementById('addedFriends');
+                    container.innerHTML = template;
+                    // console.log(response.response);
+                    console.log(allFriends);
                     resolve();
                 }
             });
@@ -108,6 +144,9 @@
 (function() {
     var contentContainer = document.querySelector('.filter-content');
 
+    var allFriends       = document.getElementById('allFriends');
+    var addedFrList      = document.getElementById('addedFriends');
+
     contentContainer.addEventListener('click', listAction);
 
     function listAction(e) {
@@ -119,9 +158,7 @@
         var link        = target.parentNode;
         var friend      = target.closest('li');
         var friendData  = {};
-        var allFriends  = document.getElementById('allFriends');
-        var addedFrList = document.getElementById('addedFriends');
-
+        
         if(link.className === addClass) {
 
             addedFrList.appendChild(friend);
@@ -142,39 +179,21 @@
     saveBtn.addEventListener('click', saveList);
 
     function saveList(e){
-        var listAll      = document.getElementById('allFriends').children;
         var listAdded    = document.getElementById('addedFriends').children;
-        var listAllarr   = [];
         var listAddedarr = [];
-        var obj;
-        var img;
-        var name;
-        var Obj = function( photo, name) {
-            this.name = name;
-            this.photo = photo;
-        };
+        var id;
 
         e.preventDefault();
 
         if( listAdded.length ) {
-            for( var i = 0; i < listAll.length; i++ ) {
-                img  = listAll[i].querySelector('.filter-content-ava__img').getAttribute('src'); 
-                name = listAll[i].querySelector('.filter-content-name__text').innerText;
-                obj  = new Obj(img, name);
-                listAllarr.push(obj);
-            }
             for( var k = 0; k < listAdded.length; k++ ) {
                 if( listAdded[k].tagName === "LI") {
-                    img  = listAdded[k].querySelector('.filter-content-ava__img').getAttribute('src'); 
-                    name = listAdded[k].querySelector('.filter-content-name__text').innerText;
-                    obj  = new Obj(img, name);
-                    listAddedarr.push(obj);
+                    id  = listAdded[k].getAttribute('data-id'); 
+                    listAddedarr.push(id);
                 }
             }
         }
-        // console.log(JSON.stringify(listAllarr));
         // console.log(JSON.stringify(listAddedarr));
-        localStorage.setItem('allFriends', JSON.stringify(listAllarr));
-        localStorage.setItem('addedFriends', JSON.stringify(listAddedarr));
+        localStorage.setItem('addedFriends', listAddedarr);
     }
 }());
