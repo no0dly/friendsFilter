@@ -31,51 +31,66 @@
     }).then(function() {
         return new Promise(function(resolve, reject){
             VK.api('friends.get', {'fields':'photo_50'}, function(response) {
+
+                var locStor      = localStorage.addedFriends;
+                var addedFriends = [];
+                var allFriends   = [];
+                var container;
+                var source;
+                var templateFn;
+                var template;
+                var locStorArr;
+
+                function filterAll(element) {
+                    for(var i = 0; i < locStorArr.length; i++) {
+                        if ( locStorArr[i].toString().indexOf( element.uid.toString() ) !== -1 ) {
+                            return false;
+                        }
+                    }
+                    return true;
+                }
+
+                function filterAdded(val) {
+                    response.response.forEach(function(respValue) {
+                        if ( val.toString().indexOf( respValue.uid.toString() ) !== -1 ) {
+                            addedFriends.push(respValue);
+                            return true;
+                        }
+                    });
+                    return false;
+                }
+
+                function drawList( tag, list, listTag ) {
+                    source     = document.getElementById(tag).innerHTML;
+                    templateFn = Handlebars.compile(source);
+                    template   = templateFn({list: list});
+                    container  = document.getElementById(listTag);
+                    container.innerHTML = template;
+                }
+
                 if( response.error ) {
                     reject( new Error(response.error.error_msg) );
                 } else {
 
-                    var locStor      = localStorage.addedFriends.split(',');
-                    var addedFriends = [];
-                    var allFriends   = [];
-                    var container;
-                    var source;
-                    var templateFn;
-                    var template;
-                    
+                    if( locStor ) {
+                        locStorArr = locStor.split(',');
 
-                    if( locStor.length ) {
                         allFriends = response.response.filter(function(val) {
-                            if(!filter(val)) {
-                                return false;
-                            }
-                            return true;
+                            return filterAll(val);
                         });
 
-                        function filter(element) {
-                            for(var i = 0; i < locStor.length; i++) {
-                                if (element.uid.toString().indexOf( locStor[i].toString() ) !== -1 ) {
-                                    addedFriends.push(element);
-                                    return false;
-                                }
-                            }
-                            return true;
-                        }
+                        locStorArr.forEach( filterAdded.bind(this) );
+
+                        //all fr
+                        drawList('listTemplate', allFriends, 'allFriends');
+
+                        //added fr
+                        drawList('addedListTemplate', addedFriends, 'addedFriends');
+
+                    } else {
+                        drawList('listTemplate', response.response, 'allFriends');
                     }
-                    //all fr
-                    source     = document.getElementById('listTemplate').innerHTML;
-                    templateFn = Handlebars.compile(source);
-                    template   = templateFn({list: allFriends});
-                    container  = document.getElementById('allFriends');
-                    container.innerHTML = template;
-                    //added fr
-                    source     = document.getElementById('addedListTemplate').innerHTML;
-                    templateFn = Handlebars.compile(source);
-                    template   = templateFn({list: addedFriends});
-                    container  = document.getElementById('addedFriends');
-                    container.innerHTML = template;
-                    // console.log(response.response);
-                    console.log(allFriends);
+                    
                     resolve();
                 }
             });
@@ -83,6 +98,8 @@
     }).then(function() {
         var searchAll   = document.getElementById('leftName');
         var searchAdded = document.getElementById('rightName');
+        var listAll     = document.getElementById('allFriends');
+        var listAdded   = document.getElementById('addedFriends');
 
         searchAll.value = null;
         searchAdded.value = null;
@@ -94,21 +111,25 @@
             var inputVal = $this.value.toLowerCase();
             var items;
             var friendName;
+            var itemClass;
 
             if( e.target.name === 'left-name') {
-                items = document.getElementById('allFriends');
+                items = listAll;
             } else {
-                items = document.getElementById('addedFriends');
+                items = listAdded;
             }
 
-            friendName = items.querySelectorAll('.filter-content-name__text');
-
+            console.time('perebor');
+            friendName = items.children;
             for( var i = 0; i < friendName.length; i++ ) {
-                friendName[i].closest('.filter-content__item').classList.remove('hide');
+                itemClass = friendName[i].classList;
+
+                itemClass.remove('hide');
                 if( friendName[i].innerText.toLowerCase().indexOf(inputVal) === -1 ) {
-                    friendName[i].closest('.filter-content__item').classList.add('hide');
+                    itemClass.add('hide');
                 }
             }
+            console.timeEnd('perebor');
         }
     }).then(function() {
         var content        = document.querySelector('.filter-content');
@@ -194,6 +215,8 @@
             }
         }
         // console.log(JSON.stringify(listAddedarr));
+        localStorage.clear();
         localStorage.setItem('addedFriends', listAddedarr);
+        location.reload();
     }
 }());
