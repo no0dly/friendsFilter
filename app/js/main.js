@@ -43,7 +43,7 @@
 
                 function filterAll(element) {
                     for(var i = 0; i < locStorArr.length; i++) {
-                        if ( locStorArr[i].toString().indexOf( element.uid.toString() ) !== -1 ) {
+                        if ( locStorArr[i].indexOf( element.uid ) !== -1 ) {
                             return false;
                         }
                     }
@@ -211,9 +211,9 @@
                 }
             }
         }
-        // console.log(JSON.stringify(listAddedarr));
+
         localStorage.clear();
-        localStorage.setItem('addedFriends', listAddedarr);
+        localStorage.setItem('addedFriends', JSON.stringify(listAddedarr));
         location.reload();
     }
 }());
