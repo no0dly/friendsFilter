@@ -15,6 +15,7 @@
   "dependencies": {
     "normalize.css": "~3.0.3",
     "modernizr": "~2.8.3",
-    "perfect-scrollbar": "^0.6.10"
+    "perfect-scrollbar": "^0.6.10",
+    "handlebars": "^4.0.5"
   }
 }
