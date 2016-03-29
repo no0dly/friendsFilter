@@ -118,8 +118,6 @@
             } else {
                 items = listAdded;
             }
-
-            console.time('perebor');
             friendName = items.children;
             for( var i = 0; i < friendName.length; i++ ) {
                 itemClass = friendName[i].classList;
@@ -129,7 +127,6 @@
                     itemClass.add('hide');
                 }
             }
-            console.timeEnd('perebor');
         }
     }).then(function() {
         var content        = document.querySelector('.filter-content');
