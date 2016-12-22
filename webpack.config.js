@@ -48,15 +48,14 @@ module.exports = {
                 exclude: /(node_modules|bower_components)/
             },
             {
-                test: /\.woff2?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
-                // Limiting the size of the woff fonts breaks font-awesome ONLY for the extract text plugin
-                // loader: "url?limit=10000"
-                loader: "url"
-              },
-              {
-                test: /\.(ttf|eot|svg)(\?[\s\S]+)?$/,
-                loader: 'file'
-              },
+                test: /\.scss$/,
+                loaders: ["style-loader", "css-loader", "sass-loader"]
+            },
+
+            {
+                test: /\.(otf|eot|svg|ttf|woff|woff2).*$/,
+                loader: 'url'
+            },
         ]
     },
     devtool: 'inline-source-map'

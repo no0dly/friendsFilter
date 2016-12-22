@@ -7,9 +7,9 @@ import Main       from 'Main';
 
 const store  = require('configureStore').configure();
 
+require('public/fonts/fira/fonts.scss');
+require('AppCss');
 
-require('style!css!sass!AppCss')
-// require('font-awesome/css/font-awesome.css')
 
 ReactDOM.render(
     <Provider store={store}>

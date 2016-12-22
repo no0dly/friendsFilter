@@ -12,7 +12,7 @@ input[type="search"] {
 
 body {
     font-size: 16px;
-    // font-family: $medium;
+    font-family: $medium;
 }
 
 .filter {
@@ -111,12 +111,12 @@ body {
     padding: 8px 10px 6px 30px;
     color: $dgray;
     font-size: 12px;
-    // font-family: $light;
+    font-family: $light;
     outline: none;
-    // &::-webkit-input-placeholder {color:$gray;font-size:12px;font-family:$light}
-    // &::-moz-placeholder          {color:$gray;font-size:12px;font-family:$light}
-    // &:-moz-placeholder           {color:$gray;font-size:12px;font-family:$light}
-    // &:-ms-input-placeholder      {color:$gray;font-size:12px;font-family:$light}
+    &::-webkit-input-placeholder {color:$gray;font-size:12px;font-family:$light}
+    &::-moz-placeholder          {color:$gray;font-size:12px;font-family:$light}
+    &:-moz-placeholder           {color:$gray;font-size:12px;font-family:$light}
+    &:-ms-input-placeholder      {color:$gray;font-size:12px;font-family:$light}
 }
 
 .filter-search__btn {
@@ -237,7 +237,7 @@ body {
     @include border-radius(10px);
     color: $white;
     font-size: 12px;
-    // font-family: $light;
+    font-family: $light;
     transition: 0.3s;
     &:hover {
         background: lighten( $orange, 5% );

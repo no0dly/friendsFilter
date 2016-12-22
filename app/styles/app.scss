@@ -6,12 +6,8 @@
 
 @import "base/_variables";
 
-/* --------- fonts --------- */
-
-// @import "base/_fonts";
-
 /* --------- components --------- */
 
-@import "../../node_modules/font-awesome/css/font-awesome.css";
+@import "~font-awesome/css/font-awesome.css";
 
 @import "components/_common";
